@@ -1,8 +1,54 @@
-#  **[SpeedTest by OpenSpeedTest™](https://openspeedtest.com?Run&ref=Github)** - Free & Open-Source HTML5 Network Performance Estimation Tool.
+#  **[SpeedTest by OpenSpeedTest™](https://openspeedtest.com?Run&ref=Github)** - Free & Open-Source HTML5 Network Performance Estimation Tool with UDP-like Testing
 
   
 
-SpeedTest by OpenSpeedTest™ is a Free and Open-Source HTML5 Network Performance Estimation Tool Written in Vanilla Javascript and only uses built-in Web APIs like `XMLHttpRequest` `(XHR)`, `HTML`, `CSS`, `JS`, & `SVG`. No Third-Party frameworks or libraries are Required. All we need is a static web server like `NGINX`. I started this project in 2011 and moved to OpenSpeedTest.com dedicated Project/Domain Name in 2013.
+SpeedTest by OpenSpeedTest™ is a Free and Open-Source HTML5 Network Performance Estimation Tool. This enhanced version now includes **WebRTC-based UDP-like testing** in addition to the traditional HTTP-based testing. The tool uses built-in Web APIs like `XMLHttpRequest` `(XHR)`, `WebRTC DataChannels`, `HTML`, `CSS`, `JS`, & `SVG`. No Third-Party frameworks or libraries are Required.
+
+## 🚀 **NEW: Multi-Protocol Network Testing**
+
+This enhanced version includes comprehensive network testing with three different protocols:
+
+### 1. **True UDP Testing** 🔴
+- **Server-side UDP implementation** with HTTP bridge for browser access
+- **Real UDP sockets** for authentic UDP performance measurement
+- **Packet loss tolerance** and unordered delivery testing
+- **Lowest possible latency** for UDP-based applications
+
+### 2. **WebRTC DataChannel Testing** 🟢  
+- **SCTP over DTLS/UDP** for UDP-like behavior in browsers
+- **Direct peer-to-peer communication** 
+- **Configurable reliability** (unreliable mode for UDP simulation)
+- **Real-time performance feedback**
+
+### 3. **HTTP Testing** 🔵
+- **Original TCP-based testing** (reliable fallback)
+- **Universal browser compatibility**
+- **Established baseline** for comparison
+
+### Quick Start for Multi-Protocol Testing
+
+1. **Setup all servers:**
+   ```bash
+   ./start-servers.sh
+   ```
+
+2. **Open in browser:**
+   ```
+   http://localhost:8080
+   ```
+
+3. **Select protocol or enable comparison mode:**
+   - Use the protocol selector in the top-right corner
+   - Enable "Compare All Protocols" to test all three
+   - Results show latency and throughput differences
+
+### Protocol Comparison Features
+- **Side-by-side testing** of UDP, WebRTC, and HTTP
+- **Performance comparison table** with latency and throughput metrics
+- **Automatic protocol selection** (best available)
+- **Graceful fallback** if protocols are unavailable
+
+> **Note**: True UDP testing requires the server-side bridge, while WebRTC works with just browser APIs. HTTP testing is always available as a fallback.
   
 
 [![Download OpenSpeedTest-Server V2.1](https://github.com/openspeedtest/v2-Test/raw/main/images/10G-S.gif)](https://go.openspeedtest.com/Server  "Download OpenSpeedTest-Server V2.1")
@@ -25,7 +71,35 @@ OpenSpeedTest contains Only `STATIC` Files like `HTML`,`CSS` & `JS`.
 
 So you don't need to worry about Security Updates or Hidden Exploits that may compromise your secure environments.
 
-  
+###  Multi-Protocol Testing Capabilities.
+
+This enhanced version supports three different network testing protocols:
+
+#### **True UDP Testing** 
+- **Protocol**: Native UDP sockets on server-side
+- **Access**: HTTP bridge enables browser access to UDP testing
+- **Benefits**: Authentic UDP performance, packet loss handling, lowest latency
+- **Use Cases**: UDP-based applications, gaming, real-time communications
+
+#### **WebRTC DataChannel Testing**
+- **Protocol**: SCTP over DTLS over UDP (closest to UDP in browsers)
+- **Configuration**: Unordered, unreliable packet delivery
+- **Benefits**: Lower latency than TCP, better congestion control, real-time metrics
+- **Compatibility**: Chrome 56+, Firefox 52+, Safari 11+, Edge 79+
+
+#### **HTTP Testing (Original)**
+- **Protocol**: TCP with HTTP/XMLHttpRequest
+- **Benefits**: Universal compatibility, reliable baseline
+- **Use Cases**: Traditional web applications, compatibility testing
+
+### **Protocol Performance Comparison**
+
+| Feature | True UDP | WebRTC | HTTP |
+|---------|----------|---------|------|
+| Latency | Lowest | Low | Higher |
+| Packet Loss | Tolerance | Configurable | Automatic Recovery |
+| Browser Support | Via Bridge | Modern Browsers | Universal |
+| Use Case | UDP Apps | Real-time Web | Traditional Web |
 
 ###  Lightweight, High Performance.
 

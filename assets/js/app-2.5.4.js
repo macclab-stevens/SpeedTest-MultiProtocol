@@ -816,6 +816,26 @@ window.onload = function() {
       Show.ip();
     }
     function runTasks() {
+      // Check if multi-protocol testing is available
+      if (typeof window.runMultiProtocolSpeedTest === 'function') {
+        console.log('Running multi-protocol speed test (UDP/WebRTC/HTTP)');
+        if (window.runMultiProtocolSpeedTest()) {
+          return; // Multi-protocol test started successfully
+        }
+      }
+      
+      // Check if WebRTC mode is available and enabled
+      if (typeof window.runWebRTCSpeedTest === 'function' && window.isWebRTCMode) {
+        console.log('Running WebRTC UDP-like speed test');
+        if (window.runWebRTCSpeedTest()) {
+          return; // WebRTC test started successfully
+        }
+        console.log('WebRTC test failed, falling back to standard HTTP test');
+      }
+      
+      // Fall back to original HTTP testing
+      console.log('Running standard HTTP speed test');
+      
       if (addEvent) {
         removeEvts();
         addEvent = false;
